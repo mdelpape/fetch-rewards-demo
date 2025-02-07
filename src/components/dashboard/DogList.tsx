@@ -27,14 +27,17 @@ export default function DogList({ dogs, selectedDogs, setSelectedDogs }: DogList
 
   const findMatch = async () => {
     try {
-      const { data } = await api.post<Match>('/dogs/match', selectedDogs);
-      setDogMatch(dogs.find(dog => dog.id === data.match) || null);
+      const { data: matchData } = await api.post<Match>('/dogs/match', selectedDogs);
+
+      const { data: matchedDogs } = await api.post<DogType[]>('/dogs', [matchData.match]);
+      setDogMatch(matchedDogs[0]);
+
       triggerToast({
         title: "Match Found",
         description: "Match successfully found",
       });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.error('Failed to find match', error);
       triggerToast({
         title: "Failed to find match",
         description: "Please select and try again",

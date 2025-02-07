@@ -10,7 +10,6 @@ export default function Button({ children, onClick, ...props }: ButtonProps) {
   const [loading, setLoading] = useState(false);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log('Button clicked');
     setLoading(true);
 
     if (onClick) {
