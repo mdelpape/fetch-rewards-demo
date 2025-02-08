@@ -9,7 +9,7 @@ export default function Home() {
         <Login />
       </main>
       <footer className="row-start-3 flex items-center">
-        <p>Created by Michael Delpape</p>
+        <p>Created by Michael Del Pape</p>
         <a
           href="https://github.com/mdelpape"
           target="_blank"
